@@ -1,0 +1,34 @@
+{
+  "name": "@ivandurak0/blockchain-api",
+  "version": "0.0.1",
+  "description": "Simple and easy lib to work with blockchain api and all kind of cryptocurrencies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanDurak0/blockchain-api.git"
+  },
+  "keywords": [
+    "blockchain",
+    "cryptocurrency",
+    "bitcoin",
+    "litecoin",
+    "crypto"
+  ],
+  "author": "ivandurak0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IvanDurak0/blockchain-api/issues"
+  },
+  "homepage": "https://github.com/IvanDurak0/blockchain-api#readme",
+  "dependencies": {
+    "bs58": "^4.0.1",
+    "elliptic": "^6.5.1",
+    "js-sha256": "^0.9.0",
+    "ripemd160": "^2.0.2",
+    "secp256k1": "^3.7.1",
+    "secure-random": "^1.1.2"
+  }
+}
