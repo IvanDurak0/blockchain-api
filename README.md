@@ -47,3 +47,8 @@ const privateKey = blockchainApi.getPrivateKeyBTC(rawPrivateKey);
 // You can tell it to your friends so that they could transfer money to you
 const addressBTC = blockchainApi.getAddressBTC(rawPrivateKey);
 ```
+
+# Support
+You can support this project and transfer BTC to this address:
+
+1NBAH44o8zCY4WXQnpnksk1JjE6aPu9BfC
