@@ -1,6 +1,6 @@
 {
   "name": "@ivandurak0/blockchain-api",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Simple and easy lib to work with blockchain api and all kind of cryptocurrencies.",
   "main": "index.js",
   "scripts": {
