@@ -48,6 +48,55 @@ const privateKey = blockchainApi.getPrivateKeyBTC(rawPrivateKey);
 const addressBTC = blockchainApi.getAddressBTC(rawPrivateKey);
 ```
 
+
+# Example of sending transaction
+
+```js
+// In this example we will transfer all money from one wallet to another
+
+
+// Get all unspent transactions from wallet
+blockchainApi.listUnspent([1, 9999999, ["your_first_wallet_address"]], (response) => {
+    if(response.error) {
+        console.log("An error occured", response.error);
+        return;
+    }
+    
+    let totalAmount = 0;
+    const inputs = [];
+    const output = {};
+    
+    // Transactions with 6+ confirmations are considered safe
+    response.result.filter(t => t.confirmations >= 6).forEach((t) => {
+       totalAmount += t.amount;
+       inputs.push({
+           txid: t.txid,
+           vout: t.vout
+       });
+    });
+    
+    // 2% of total amount are used as a transaction fee, you can use any other amount if you want
+    output["your_second_wallet_address"] = (totalAmount * 0.98).toFixed(8);
+   
+    blockchainApi.createRawTransaction([inputs, output], (rawTransaction) => {
+        if(!rawTransaction.result) {
+            console.log("An error occured");
+            return;
+        }
+        blockchainApi.signRawTransactionWithKey([rawTransaction.result, ["your_first_wallet_private_wif"]],
+            (signedTransaction) => {
+                if (!signedTransaction.result) {
+                    console.log("An error occured");
+                    return;
+                }
+                blockchainApi.sendRawTransaction([signedTransaction.result.hex], (transaction) => {
+                    console.log("Success!!!", transaction);
+                });
+            });
+    });
+});
+```
+
 # Support
 You can support this project and transfer BTC to this address:
 
